@@ -1,3 +1,0 @@
-#README
-
-* EEOB 563 Class
