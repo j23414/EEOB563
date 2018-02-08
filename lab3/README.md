@@ -216,4 +216,15 @@ Fetch executable
 
 ```
 wget http://evolution.gs.washington.edu/phylip/download/phylip-3.695-osx.dmg
+open .
+```
+
+Double click on the dmg to mount it
+
+```
+$ mkdir phylip
+$ cp /Volumes/phylip-3.695-vol/phylip-3.695/exe/*.app/Contents/MacOS/* phylip/.
+$ cd phylip
+$ ls
+$ rm *.command
 ```
