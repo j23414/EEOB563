@@ -1,7 +1,7 @@
-#EEOB 563 Molecular Phylogenetics - Spring 2018
+# EEOB 563 Molecular Phylogenetics - Spring 2018
 
 
-#Course Materials and Lab Data
+# Course Materials and Lab Data
 
 ```
 $ git clone https://github.com/ISU-MolPhyl/EEOB563-Spring2018.git

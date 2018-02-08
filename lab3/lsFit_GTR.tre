@@ -1,0 +1,48 @@
+#NEXUS 
+
+Begin trees;  [Treefile saved Thu Feb  8 10:19:45 2018]
+[!
+>Data file = cob_nt.nxs
+>Heuristic search settings:
+>  Optimality criterion = distance (unweighted least squares (power=0))
+>    Negative branch lengths allowed, but set to zero for tree-score calculation
+>    Distance measure = general time-reversible
+>  Starting tree(s) obtained via neighbor-joining
+>  Branch-swapping algorithm: tree-bisection-reconnection (TBR) with reconnection limit = 8
+>    Steepest descent option not in effect
+>  Initial 'Maxtrees' setting = 100
+>  Zero-length branches not collapsed
+>  'MulTrees' option in effect
+>  No topological constraints in effect
+>  Trees are unrooted
+>
+>Heuristic search completed
+>  Total number of rearrangements tried = 3172
+>  Score of best tree(s) found = 0.03502 (%SD=4.78135, g%SD=4.81988[k=37])
+>  Number of trees retained = 1
+>  Time used = 0.02 sec (CPU time = 0.02 sec)
+]
+	Translate
+		1 Platypus,
+		2 Echidna,
+		3 Opossum,
+		4 Wallaby,
+		5 Bandicoot,
+		6 Elephant,
+		7 Aardvark,
+		8 Tenrec,
+		9 Sloth,
+		10 Armadillo,
+		11 Human,
+		12 Tree_shrew,
+		13 Rabbit,
+		14 Mouse,
+		15 Hedgehog,
+		16 Flying_fox,
+		17 Cat,
+		18 Dog,
+		19 Pig,
+		20 Whale
+		;
+tree 'PAUP_1' = [&U] (1,2,(((3,5),4),(((6,(7,(((9,10),12),(((11,17),13),((16,(19,20)),18))))),(8,15)),14)));
+End;

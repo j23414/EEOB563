@@ -1,0 +1,34 @@
+#NEXUS 
+
+Begin trees;  [Treefile saved Thu Feb  8 10:35:50 2018]
+[!
+>Data file = cob_nt.nxs
+>Neighbor-joining search settings:
+>  Ties (if encountered) will be broken systematically
+>  Distance measure = uncorrected ("p")
+>  (Tree is unrooted)
+]
+	Translate
+		1 Platypus,
+		2 Echidna,
+		3 Opossum,
+		4 Wallaby,
+		5 Bandicoot,
+		6 Elephant,
+		7 Aardvark,
+		8 Tenrec,
+		9 Sloth,
+		10 Armadillo,
+		11 Human,
+		12 Tree_shrew,
+		13 Rabbit,
+		14 Mouse,
+		15 Hedgehog,
+		16 Flying_fox,
+		17 Cat,
+		18 Dog,
+		19 Pig,
+		20 Whale
+		;
+tree 'PAUP_1' = [&U] (1,2,(((3,5),4),((((((6,(8,15)),(9,10)),(7,13)),((11,17),((16,(19,20)),18))),12),14)));
+End;

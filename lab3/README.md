@@ -145,16 +145,75 @@ paup> savetree file=lsFit_GTR.tre format=nexus
 
 ### Run the neighbor-joining algorithm with the selected distance
 
-Can you figure out what is the command name for the neighbor-joining analysis? How about UPGMA?
+Can you figure out what is the command name for the neighbor-joining analysis? `NJ` How about UPGMA? `UPGMA`
 
 Run neighbor-joining search with 5 distances listed above.
 
 ```
-paup> 
+paup> set criterion=distance;
+paup> dset distance=P           # uncorrected
+paup> NJ; savetree file=nj_P.tre format=nexus;
+paup> dset distance=JC          # Jukes-Cantor
+paup> NJ; savetree file=nj_JC.tre format=nexus;
+paup> dset distance=K2P         # Kimura 2-parameter
+paup> NJ; savetree file=nj_K2P.tre format=nexus;
+paup> dset distance=HKY85       # HKY85
+paup> NJ; savetree file=nj_HKY85.tre format=nexus;
+paup> dset distance=GTR         # GTR
+paup> NJ; savetree file=nj_GTR.tre format=nexus;
 ```
 
-* How does the distance model chosen affect the tree found by NJ for this data set?
+* How does the distance model chosen affect the tree found by NJ for this data set? `open tre files in FastTree and compare`
 * Can you figure out how to perform bootstrap analysis (100 replicates, heuristic search using least squares) under the HKY85 model?
+
+```
+
+```
+
 * Write a PAUP block that will do several distance analyses automatically for you.
 
+```
+begin PAUP;
+set criterion=distance;
+dset objective=lsFit
+dset distance=P
+NJ; savetree file=nj_P.tre format=nexus;
+dset distance=JC 
+NJ; savetree file=nj_JC.tre format=nexus;
+dset distance=K2P 
+NJ; savetree file=nj_K2P.tre format=nexus;
+dset distance=HKY85 
+NJ; savetree file=nj_HKY85.tre format=nexus;
+dset distance=GTR
+NJ; savetree file=nj_GTR.tre format=nexus;
+end PAUP;
+```
 
+## Part 2: PHYLIP
+
+[PHYLIP](http://evolution.genetics.washington.edu/phylip/getme-new1.html)
+
+PHYLIP is a package of phylogenetic programs written by Joe Felsenstein group and first released in 1980. The programs can infer phylogenies by parsimony, compatibility, distance matrix methods, and likelihood. You probably won’t use PHYLIP for conventional phylogenetic analysis as newer programs are much faster and often incorporate additional models of sequence evolution. However, some types of analyses available in PHYLIP are difficult to impossible to find in other programs. An additional advantage of this package is its thorough, well organized, and up to date documentation.
+
+Unlike PAUP, which installs as a single program, PHYLIP is a collection of 35+ programs that are intended to be used sequentially. You start a program by typing its name at the unix prompt.
+
+Here is outline of the exercise (from a nice chapter in Current Protocols in Bioinformatics ) with the name of the programs listed in ALLCAPs.
+
+### Install phylip
+
+#### Install and compile (not working yet)
+
+```
+$ wget http://evolution.gs.washington.edu/phylip/download/phylip-3.697.tar.gz
+$ tar -xvzf phylip-3.697.tar.gz
+$ cd phylip-3.697/src
+$ make install -f Makefile.osx
+```
+
+#### Executable
+
+Fetch executable
+
+```
+wget http://evolution.gs.washington.edu/phylip/download/phylip-3.695-osx.dmg
+```
