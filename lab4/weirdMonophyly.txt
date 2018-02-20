@@ -1,0 +1,1 @@
+(Cow, Carp, Chicken, Human, Loach, Seal, Whale, Rat, (Frog, Mouse));
