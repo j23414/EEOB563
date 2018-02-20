@@ -1,39 +1,17 @@
 # Lab #4: Maximum Likelihood
-
-## Install RAxML
-
-Fetch the latest RAxML codebase from github and make the executable. There are many parallel versions of RAxML
-
-```
-$ git clone https://github.com/stamatak/standard-RAxML.git
-$ cd standard-RAxML
-$ make -f Makefile.PTHREADS.gcc
-$ ls -ltr
-...
--rw-r--r--   1 jenchang  staff   2.1K Feb 20 09:11 mem_alloc.o
--rw-r--r--   1 jenchang  staff   4.8K Feb 20 09:11 eigen.o
--rwxr-xr-x   1 jenchang  staff   928K Feb 20 09:11 raxmlHPC-PTHREADS
-```
-
 ## Likelihood analysis using RAxML
+<img src="./fisher.jpg" align="right" hspace="10">
+Several programs implement the maximum likelihood method for molecular sequences, including programs like MolPHY, PAUP and PHYLIP, which are accurate, but usually limited to single gene datasets from up to a few dozens of taxa, and newer programs including [FastTree](http://meta.microbesonline.org/fasttree/), [PhyML](http://www.atgc-montpellier.fr/phyml/), and [RAxML](https://sco.h-its.org/exelixis/software.html), which are much faster but use different heuristics and approximations. We will use RAxML for this lab, which is arguably the most popular at this time, but your preference may depend on the features present/absent in these programs (a brief comparison is available [here](http://blog.geneious.com/post/84886619339/which-tree-builder-should-i-use-making-the-most)). RAxML is designed with an emphasis on computationally efficient and biologically accurate analysis of very large data sets. However, the program is appropriate for the analysis of data sets of any size. The program is command line-based, but a [GUI front](https://sourceforge.net/projects/raxmlgui/) has been developed for it. We will run a command-line version of RAxML on local computers and/or on the HPC-class server.
 
-
+An important additional goal of this lab is to teach you how to use the Portable Batch System (PBS) on the student cluster. You need to use this system to take the full advantage of the HPC capabilities.
 
 ## Part1: Using RAxML on a local computer (or on the HPC-class in an interactive mode)
+For this part we will be using a RAxML tutorial written by the creators of RAxML.  Make a new directory (lab4) in your eeob563_labs folder and download all required files there:
+`wget http://sco.h-its.org/exelixis/resource/download/hands-on/Hands-On.tar.bz2` or, if you are on a local computer, [click here](https://sco.h-its.org/exelixis/resource/download/hands-on/Hands-On.tar.bz2)). Uncompress and extract it with (`tar -xjvf Hands-On.tar.bz2`). 
 
-Fetch our dataset.
+RAxML is installed as a module on HPC-class. However, the version installed have long and ugly names (raxmlHPC-MPI-AVX, raxmlHPC-PTHREADS-AVX, raxmlHPC-PTHREADS-SSE3). To make our life easier, we'll create an alias for one of them: `alias raxmlHPC='raxmlHPC-PTHREADS-SSE3 -T2'`
 
-```
-$ wget http://sco.h-its.org/exelixis/resource/download/hands-on/Hands-On.tar.bz2
-$ tar -xjvf Hands-On.tar.bz2
-```
-
-RAxML versions installed on HPC but with long and ugly names (raxmlHPC-MPI-AVX, raxmlHPC-PTHREADS-AVX, raxmlHPC-PTHREADS-SSE3). To make our life easier, we'll create an alias for one of them: 
-
-```
-$ alias raxmlHPC='raxmlHPC-PTHREADS-SSE3 -T2'
-$ raxmlHPC -h
-```
+Now we can look at the RAxML help by typing `raxmlHPC -h` 
 
 In general, four arguments are required: 
 
@@ -43,35 +21,6 @@ In general, four arguments are required:
 -p random number  
 
 Now go to the [tutorial](https://sco.h-its.org/exelixis/web/software/raxml/hands_on.html) webpage and complete steps 3-10 (but skip step #8).
-
-Getting started by running a RAxML command...
-
-Binary data, gamma model. The -n T1 is arbitrary so the different runs do not overwrite each other.
-
-```
-$ ./raxmlHPC -T2 -m BINGAMMA -p 12345 -s Hands-On/binary.phy -n T1
-```
-
-CAT = memory and time efficient approximation for the standard GAMMA
-
-``` 
-$ ./raxmlHPC -m BINCAT -p 12345 -s Hands-On/binary.phy -n T2
-```
-
-`-p 12345` provides a set random seed so you'll get the same tree each time.
-
-```
-$ ./raxmlHPC -m BINGAMMA -p 12345 -s Hands-On/binary.phy -n T3  
-```
-
-Can also pass a starting tree. (the starting tree is not in H
-
-```
-./raxmlHPC -m BINGAMMA -t startingTree.txt -s binary.phy -n T4
-```
-
-
-
 
 ## Part 2: ML analysis using RaxML on the hpc-class cluster
 We have already used [hpc-class](https://www.hpc.iastate.edu/guides/classroom-hpc-cluster) cluster interactively in previous labs. Here we will learn how to submit and mange jobs using **Slurm Workload manager**. The two advantages of using this manager is that you can run your program for a longer time (up to several days) and can use multiple processors.
