@@ -39,3 +39,19 @@ raxmlHPC -m GTRGAMMA -p 12345 -s cob_nt_aln.phy -# 100 -n nt
 date
 # End of file
 ```
+
+Submit a job
+
+```
+$ sbatch slurm_script.sh
+```
+
+Check your jobs
+
+```
+$ squeue -u username     # your jobs
+$ squeue |less           # all jobs
+$ squeue -t RUNNING      # Running jobs
+$ squeue -t PENDING      # Pending jobs
+$ scancel jobid          # Cancel your job
+```
