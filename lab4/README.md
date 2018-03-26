@@ -7,12 +7,12 @@ Fetch the latest RAxML codebase from github and make the executable. There are m
 ```
 $ git clone https://github.com/stamatak/standard-RAxML.git
 $ cd standard-RAxML
-$ make -f Makefile.PTHREADS.gcc
+$ make -f Makefile.SSE3.PTHREADS.gcc
 $ ls -ltr
 ...
--rw-r--r--   1 jenchang  staff   2.1K Feb 20 09:11 mem_alloc.o
--rw-r--r--   1 jenchang  staff   4.8K Feb 20 09:11 eigen.o
--rwxr-xr-x   1 jenchang  staff   928K Feb 20 09:11 raxmlHPC-PTHREADS
+-rw-r--r--   1 jenchang  staff   2.1K Feb 20 10:33 mem_alloc.o
+-rw-r--r--   1 jenchang  staff   4.8K Feb 20 10:33 eigen.o
+-rwxr-xr-x   1 jenchang  staff   960K Feb 20 10:33 raxmlHPC-PTHREADS-SSE3
 ```
 
 ## Likelihood analysis using RAxML
@@ -342,8 +342,6 @@ If we want Mouse and Rat to be our ougroups we just type:
 $ ./raxmlHPC -p 12345 -o Mouse,Rat -m GTRGAMMA -s Hands-On/dna.phy -n T31
 ```
 
-
-
 ## Part 2: ML analysis using RaxML on the hpc-class cluster
 We have already used [hpc-class](https://www.hpc.iastate.edu/guides/classroom-hpc-cluster) cluster interactively in previous labs. Here we will learn how to submit and mange jobs using **Slurm Workload manager**. The two advantages of using this manager is that you can run your program for a longer time (up to several days) and can use multiple processors.
 
@@ -382,4 +380,9 @@ One reason RAxML is so popular is that it offers different levels of paralleliza
 
 > Try raxmlHPC-PTHREADS-AVX and raxmlHPC-PTHREADS-SSE3 versions of the program on the cob_nt.fasta dataset we used last time.  Which one was faster?  
 > Try using the MPI version of the program to do a bootstrap analysis. The raxmlHPC-MPI-AVX program that comes with the module did not work for me. So I recompiled the program without vector acceleration. You have to use `mpirun -np 16 <your_program>` to run an MPI program.  In our case, `mpirun -np 16 /shared/class/eeob563/raxml/standard-RAxML/raxmlHPC-MPI ...`
+
+
+```
+$ sbatch job.script
+```
 
