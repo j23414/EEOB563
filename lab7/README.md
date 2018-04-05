@@ -42,3 +42,29 @@ The data for these tutorial is available at the tutorial [GitHub site](https://t
 
 ### Good Luck!  
 
+## Screenshots
+
+### Install SA package in BEUTI
+
+<img src="./img/step0.png" hspace="10">
+<img src="./img/step0.5.png" hspace="10">
+
+### Load the alignment files
+
+<img src="./img/step1.png" hspace="10">
+<img src="./img/step2.png" hspace="10">
+
+On the top, click on 
+
+* Unlink Site Models
+* Link Clock Models
+* Link Trees
+
+### Tip Labels
+
+* Check "Use tip dates"
+* Change Dates specified to "Before the present" and click on "Auto-configure"
+* Split on character and take group 3 (from the headers I suppose)
+
+<img src="./img/step3.png" hspace="10">
+
